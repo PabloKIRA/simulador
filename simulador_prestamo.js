@@ -1,4 +1,3 @@
-// Definición de la clase Prestamo
 class Prestamo {
     constructor(monto, tasa, años) {
         this.monto = monto;
@@ -22,10 +21,39 @@ class Prestamo {
     }
 }
 
-// Crear una instancia de la clase Prestamo y ejecutar el simulador
-const prestamo = new Prestamo(
-    parseFloat(prompt("Ingrese el monto del préstamo:")),
-    parseFloat(prompt("Ingrese la tasa de interés anual (%):")),
-    parseInt(prompt("Ingrese el número de años del préstamo:"))
-);
-prestamo.ejecutarSimulador();
+function obtenerNumero(mensaje) {
+    let valor;
+    do {
+        valor = parseFloat(prompt(mensaje));
+    } while (isNaN(valor));
+    return valor;
+}
+
+function obtenerEntero(mensaje) {
+    let valor;
+    do {
+        valor = parseInt(prompt(mensaje));
+    } while (isNaN(valor) || valor <= 0);
+    return valor;
+}
+
+function confirmarEjecucion() {
+    return confirm("¿Desea ejecutar el simulador de préstamo?");
+}
+
+function mostrarMensajeConsola(mensaje) {
+    console.log(mensaje);
+}
+
+// Lógica principal
+const ejecutar = confirmarEjecucion();
+if (ejecutar) {
+    const montoPrestamo = obtenerNumero("Ingrese el monto del préstamo:");
+    const tasaInteres = obtenerNumero("Ingrese la tasa de interés anual (%):");
+    const añosPrestamo = obtenerEntero("Ingrese el número de años del préstamo:");
+
+    const prestamo = new Prestamo(montoPrestamo, tasaInteres, añosPrestamo);
+    prestamo.ejecutarSimulador();
+} else {
+    mostrarMensajeConsola("El simulador de préstamo no se ha ejecutado.");
+}
