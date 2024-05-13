@@ -7,53 +7,29 @@ class Prestamo {
 
     // Método para calcular el pago mensual del préstamo
     calcularPagoMensual() {
-        const tasaMensual = this.tasa / 12 / 100;
         const meses = this.años * 12;
+        const tasaMensual = this.tasa / 12 / 100;
         const pagoMensual = this.monto * (tasaMensual / (1 - Math.pow(1 + tasaMensual, -meses)));
         return pagoMensual.toFixed(2);
     }
-
-    // Método para ejecutar el simulador de préstamo
-    ejecutarSimulador() {
-        const pagoMensual = this.calcularPagoMensual();
-        console.log("El pago mensual del préstamo será de: $" + pagoMensual);
-        alert("El pago mensual del préstamo será de: $" + pagoMensual);
-    }
 }
 
-function obtenerNumero(mensaje) {
-    let valor;
-    do {
-        valor = parseFloat(prompt(mensaje));
-    } while (isNaN(valor));
-    return valor;
-}
-
-function obtenerEntero(mensaje) {
-    let valor;
-    do {
-        valor = parseInt(prompt(mensaje));
-    } while (isNaN(valor) || valor <= 0);
-    return valor;
-}
-
-function confirmarEjecucion() {
-    return confirm("¿Desea ejecutar el simulador de préstamo?");
-}
-
-function mostrarMensajeConsola(mensaje) {
-    console.log(mensaje);
-}
-
-// Lógica principal
-const ejecutar = confirmarEjecucion();
-if (ejecutar) {
-    const montoPrestamo = obtenerNumero("Ingrese el monto del préstamo:");
-    const tasaInteres = obtenerNumero("Ingrese la tasa de interés anual (%):");
-    const añosPrestamo = obtenerEntero("Ingrese el número de años del préstamo:");
+// Función para manejar el cálculo del préstamo y mostrar el resultado en un cuadro emergente
+function calcularYMostrar() {
+    const montoPrestamo = parseFloat(document.getElementById("monto").value);
+    const tasaInteres = parseFloat(document.getElementById("tasa").value);
+    const añosPrestamo = parseInt(document.getElementById("años").value);
 
     const prestamo = new Prestamo(montoPrestamo, tasaInteres, añosPrestamo);
-    prestamo.ejecutarSimulador();
-} else {
-    mostrarMensajeConsola("El simulador de préstamo no se ha ejecutado.");
+    const pagoMensual = prestamo.calcularPagoMensual();
+    mostrarResultado(pagoMensual);
 }
+
+// Función para mostrar el resultado en un cuadro emergente
+function mostrarResultado(pagoMensual) {
+    alert(`El pago mensual será de: $${pagoMensual}`);
+}
+
+// Agregar el evento de clic al botón "Calcular Pago Mensual"
+const calculateButton = document.getElementById('calculateButton');
+calculateButton.addEventListener('click', calcularYMostrar);

@@ -1,17 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Préstamos</title>
+    <link rel="stylesheet" href="./simulador_prestamo.css">
+    <title>Simulador de Préstamo</title>
+
 </head>
 <body>
+    <h1>Simulador de Préstamo Online</h1>
 
-    <h1>Simulador de Préstamos</h1>
-<p>"Simulador de Préstamos: Esta herramienta te permite calcular el pago mensual de un préstamo basado en el monto solicitado, la tasa de interés anual y el número de años del préstamo. Ingresa estos datos y obtén de manera rápida y sencilla una estimación del pago mensual que deberás realizar."</p>
-    <script src="simulador_prestamo.js"></script>
+    <form id="loanForm">
+        <label for="monto">Monto del préstamo:</label>
+        <input type="number" id="monto" required>
+        <br>
+        <label for="tasa">Tasa de interés anual (%):</label>
+        <input type="number" id="tasa" step="0.01" required>
+        <br>
+        <label for="años">Número de años del préstamo:</label>
+        <input type="number" id="años" required>
+        <br>
+        <button type="button" id="calculateButton">Calcular Pago Mensual</button>
+    </form>
+
+    <div id="result"></div>
+    <br>
+    <form id="displayForm">
+        <label for="cuotas">Cuotas a Pagar:</label>
+        <input type="text" id="cuotas" readonly>
+    </form>
+
+    <script src="./simulador_prestamo.js"></script>
+    <script>
+        // Función para mostrar el resultado en el campo de texto
+        function mostrarResultado(pagoMensual) {
+            const cuotasInput = document.getElementById('cuotas');
+            cuotasInput.value = pagoMensual;
+        }
+    </script>
 
 </body>
+<footer>
+    <p>&copy; 2024. Todos los derechos reservados.Simulador de Pablo Rodriguez entrega CoderHouse</p>
+</footer>
 </html>
-
-
