@@ -1,57 +1,165 @@
+/* simulador_prestamo.css */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure body takes up the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
 body {
-  background-color: rgb(161, 247, 247);
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: url(./assets/istockphoto-1628671842-1024x1024.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
 
-h1 {
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.card {
+    background: rgba(249, 249, 249, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
     text-align: center;
-    margin-top: 50px;
+}
+
+.card h1, .card h2 {
     margin-bottom: 20px;
-    color: #389fdb;
-
+    font-size: 1.5em;
+    color: #333;
 }
 
-form {
-    text-align: center;
+.card form {
+    margin-bottom: 20px;
 }
 
-label {
+.card form label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
-    color: #1378b3;   
+    text-align: left;
 }
 
-input[type="number"] {
-    padding: 5px;
+.card form input, .card form textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
     margin-bottom: 10px;
-    width: 100px;
-    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-button[type="button"] {
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    background-color: #1378b3;
+.card form button {
+    background-color: #12379c;
     color: white;
+    padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.card form button:hover {
+    background-color: #57b8e6;
+}
+
+/* Footer styling */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Header and Menu Styles */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 30px;
     cursor: pointer;
 }
 
-#result {
-    text-align: center;
+.menu {
+    list-style: none;
+    display: flex;
 }
 
-#displayForm {
-    text-align: center;
+.menu li {
+    margin: 0 10px;
 }
 
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+}
 
-footer{
-    text-align: center;
-    margin-top: 50px;    
-    margin-bottom: 20px;
-    color: #389fdb;
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background: #333;
+    }
 
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+}
+
+/* Specific styles for contact card */
+.contact-card {
+    max-width: 500px;
+}
+
+.contact-card form textarea {
+    resize: vertical;
 }
