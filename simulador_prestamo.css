@@ -1,13 +1,10 @@
-/* simulador_prestamo.css */
-
-/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Ensure body takes up the full height of the viewport */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -87,7 +84,7 @@ body {
     background-color: #57b8e6;
 }
 
-/* Footer styling */
+
 footer {
     background: #333;
     color: #fff;
@@ -98,7 +95,7 @@ footer {
     width: 100%;
 }
 
-/* Header and Menu Styles */
+
 header {
     background: #333;
     color: #fff;
@@ -155,7 +152,7 @@ nav {
     }
 }
 
-/* Specific styles for contact card */
+
 .contact-card {
     max-width: 500px;
 }
